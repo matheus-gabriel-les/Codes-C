@@ -68,4 +68,5 @@ int main()
 
     printf("Essa foi sua pontuação: %d\n", pontuacao_inicial);
     }
+    return 0;
 }
