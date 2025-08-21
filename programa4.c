@@ -15,7 +15,7 @@ int main(){
     printf("Digite a quarta nota : ");
     scanf("%f",&nota4);
 
-    media = nota1 + nota2 + nota3 + nota4 / 4 ;
+    media = (nota1 + nota2 + nota3 + nota4) / 4 ;
 
     if (media >= 7,0)
     {
@@ -25,4 +25,5 @@ int main(){
           printf("Reprovado");
     }
     
+
 }
