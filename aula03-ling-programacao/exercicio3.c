@@ -24,12 +24,12 @@ int main(){
           printf("  ");
           printf("%d\n",numeros[i + 1]);
 
-          aux[j] = numeros[i];
-          compara = aux[j] > numeros[i +1];  
+          aux[j] = numeros[i];//variavel auxiliar recebe o numero salvo no vetor numeros
+          compara = aux[j] > numeros[i +1];//comapara recebe verdadeiro ou falso se o numero em aux e maior que o proximo numero do vetor  
           
           if(compara){
 
-            maior = aux[j];
+            maior = aux[j];//se for verdadeira maior recebe aux
           }
        }      
        
