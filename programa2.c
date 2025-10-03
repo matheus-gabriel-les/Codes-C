@@ -1,90 +1,69 @@
-
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 
-int main(){
-
-    float valor1;
-    float valor2;
-    float resultado;
-    int operacao ;  
-   
-    printf("Escolha uma operacao(1-soma,2-subtracao,3-divisao,4-raiz,5-multiplicacao) : ");
-    scanf("%d", &operacao);
-    
-     
-    switch (operacao)
-    {
-    case  1  :
-
-        printf("Digite um numero: ");
-        scanf("%f", &valor1);
-        printf("Digite outro numero: ");
-        scanf("%f", &valor2);
-
-        resultado = valor1 + valor2 ;
-        printf("Resultado da operacao : %.2f", resultado );
-
-        break;
-    case 2 :
-
-         printf("Digite um numero: ");
-         scanf("%f", &valor1);
-         printf("Digite outro numero: ");
-         scanf("%f", &valor2);
-
-         resultado = valor1 - valor2;
-         printf("Resultado da operacao : %.2f", resultado );
-
-        break;
-
-    case 3 :
-         do
-         {
-         printf("Digite um numero: ");
-         scanf("%f", &valor1);
-         printf("Digite outro numero: ");
-         scanf("%f", &valor2);
-             
-         if (valor2 != 0)
-            {
-                resultado = valor1 / valor2 ;
-                printf("Resultado da operacao : %.2f\n", resultado);
-                break;
-            }
-            else
-             { 
-                printf("Valor invalido!\n");
-             }
-
-         }while(1);
-          return 0;
-        
-        
-    case 4 :
-            printf("Digite um numero: ");
-            scanf("%f", &valor1);
-             resultado = sqrt(valor1); 
-             printf("Resultado da operacao : %.2f", resultado );
-
-
-    case 5 :
-       
-         printf("Digite um numero: ");
-         scanf("%f", &valor1);
-         printf("Digite outro numero: ");
-         scanf("%f", &valor2);
-
-         resultado = valor1 * valor2 ;
-        printf("Resultado da operacao : %.2f", resultado );
-
-    default:
-    
-        break;
-    }
-  
-  
-      
-    
+int comparar(const void *a, const void *b) {
+    return (*(int*)a - *(int*)b);
 }
 
+void exibir_array(int *numeros, int tamanho) {
+    printf("Array: ");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d ", numeros[i]);
+    }
+    printf("\n");
+}
+
+void preencher_array(int *numeros, int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        printf("Digite um numero: ");
+        scanf("%d", &numeros[i]);
+    }
+}
+
+void encontrar_maior_menor(int *numeros, int tamanho, int *maior, int *menor) {
+    *maior = numeros[0];
+    *menor = numeros[0];
+
+    for (int i = 1; i < tamanho; i++) {
+        if (numeros[i] > *maior) {
+            *maior = numeros[i];
+        }
+        if (numeros[i] < *menor) {
+            *menor = numeros[i];
+        }
+    }
+}
+
+void calcular_media(int *numeros, int tamanho) {
+    int soma = 0;
+    for (int i = 0; i < tamanho; i++) {
+        soma += numeros[i];
+    }
+    float media = (float)soma / tamanho;
+    printf("A média dos números é: %.2f\n", media);
+}
+
+
+int main() {
+    int numeros[10];
+    int tamanho = sizeof(numeros) / sizeof(numeros[0]);
+    int maior, menor;
+
+    preencher_array(numeros, tamanho);
+
+    printf("\nAntes de ordenar:\n");
+    exibir_array(numeros, tamanho);
+
+    qsort(numeros, tamanho, sizeof(int), comparar);
+
+    printf("\nDepois de ordenar:\n");
+    exibir_array(numeros, tamanho);
+
+    encontrar_maior_menor(numeros, tamanho, &maior, &menor);
+    printf("Maior número: %d\n", maior);
+    printf("Menor número: %d\n", menor);
+
+    calcular_media(numeros, tamanho);
+
+    return 0;
+}

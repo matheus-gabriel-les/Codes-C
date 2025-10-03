@@ -1,32 +1,90 @@
-
 #include <stdio.h>
+#include <string.h>
+#include <math.h>
 
-int main(){
-    char nome[100],curso[100];
-    int idade,ano_nascimento;
+float subtrair_numeros(float *valor1, float *valor2)
+{
+    return *valor1 - *valor2;
+}
 
-    printf("=== PROGRAMA DE APRESENTACAO ===\n");
+float somar_numeros(float *valor1, float *valor2)
+{
+    return *valor1 + *valor2;
+}
 
-    printf("Digite seu nome completo: ");
-    fgets(nome, sizeof(nome) , stdin);
+float dividir_numeros(float *valor1, float *valor2)
+{
+    if (valor2 = 0)
+    {
+        printf("Operacao invalida");
+    }
+    else
+    {
+        return *valor1 / *valor2;
+    }
+}
 
-    printf("Digite sua idade: ");
-    scanf("%d", &idade);
+float multiplicar_numeros(float *valor1, float *valor2)
+{
+    return *valor1 * *valor2;
+}
 
-    printf("Digite seu curso: ");
-    scanf(" %99[^\n]",curso);
-
-    ano_nascimento = 2025 - idade ;
-    
-
-   printf("Ola %s ", nome);
-   printf("voce nasceu em %d", ano_nascimento);
+void mostrar_resultado(float resultado){
    
- 
+   printf("O resultado da operacao:  ",resultado);
+}
+void mostrar_variaveis()
+{
+    int operacao;
+    float valor1, valor2, resultado;
+
+    printf("\n=== CALCULADORA ===\n");
+    printf("Escolha uma operacao(1-soma,2-subtracao,3-divisao,4-multiplicacao,0-sair) : ");
+    scanf("%d", &operacao);
+
+    do
+    {
+        printf("Digite o primeiro numero: ");
+        scanf("%f", &valor1);
+        printf("Digite o segundo numero: ");
+        scanf("%f", &valor2);
+
+        switch (operacao)
+        {
+        case 1:
+            resultado = somar_numeros(&valor1, &valor2);
+            mostrar_resultado(resultado);
+            break;
+
+        case 2:
+
+            resultado = subtrair_numeros(&valor1, &valor2);
+            mostrar_resultado(resultado);
+            break;
+        case 3:
+
+            resultado = dividir_numeros(&valor1, &valor2);
+            mostrar_resultado(resultado);
+            break;
+        case 4:
+            resultado = multiplicar_numeros(&valor1, &valor2);
+            mostrar_resultado(resultado);
+            break;
+        case 0:
+             break;
+        default:
+            printf("Opcao invalida. Tente novamente.\n");
+            break;
+        }
+
+    } while (operacao != 0);
+}
+
+int main()
+{
+    printf("Pressione Enter para exibir o menu...");
+    getchar();
+    mostrar_variaveis();
 
     return 0;
 }
-
-
-
-
