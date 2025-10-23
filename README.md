@@ -1,3 +1,2 @@
-//Repositorio Dedicado aos estudos relacionados a lingugem de programação C//
-//DS123-LINGUAGEM DE PROGRAMAÇÃO//
-//UFPR//
+
+Repository with C programming language projects from my university studies, where I implement concepts such as functions, pointers, and arrays.
